@@ -5,6 +5,8 @@ import GridGifs from "./GridGifs";
 function App() {
   const [valorInput, setValorInput] = useState('');
   const [gifs, setGifs] = useState([])
+  const apiKey=import.meta.env.VITE_API_KEY_GIFS
+  console.log(apiKey)
 
   const onChange = (evento) => {
     const valor = evento.target.value;
@@ -12,7 +14,7 @@ function App() {
   }
 
   const getGifs = async (query) => {
-    const url = `https://api.giphy.com/v1/gifs/search?api_key=a9iktlLQUl9qAALli3D0RyXqjQEx5GMU&q=${query}`;
+    const url = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${query}`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
